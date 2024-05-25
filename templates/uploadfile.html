@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0074b8;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        select,
+        input[type="text"],
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #0074b8;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00568b;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #0074b8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #00568b;
+        }
+
+        .file-input {
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing HTML code here -->
+   <div> <a  href="{% url 'studentview' %}" style="text-decoration: none; background-color: #0074b8; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s; display: inline-block; margin-top: 20px; text-align: center; font-weight: bold;">
+        RegistrationStatus</a>
+    <a  href="/FeedbackListView/" style="text-decoration: none; background-color: #0074b8; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s; display: inline-block; margin-top: 20px; text-align: center; font-weight: bold;">
+        Feedback List</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    </div>
+    <div class="container">
+       
+        <center><h2>File Upload </h2></center>
+        <form action="/upload/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+		<div class="file-input">
+            <label for="course">course:</label><br>
+		<label><select name="course" id="course" required>
+            <option value="science">Science</option>
+            <option value="commerce">Commerce</option>
+            <option value="humanities">Humanities</option>
+        </select><br></label><br>
+		         <label for="sub">Subject:</label><br>
+		<label><input type="text" name="subject" id="subject"></label><br>
+			 <label for="year">Year:</label><br>
+		<label> <select name="year" id="year" required>
+            <option value="+1">+1</option>
+            <option value="+2">+2</option>
+        </select></label>
+        
+            
+                <label for="file">Choose a file to upload:</label>
+                <input type="file" name="upload" id="upload" accept=".pdf, .doc, .docx, .txt, .png, .jpg" required>
+            </div>
+            <div class="submit-button">
+                <input type="submit" value="Upload File"><br>
+                <a  href="{% url 'download' %}" style="text-decoration: none; background-color: #0074b8; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s; display: inline-block; margin-top: 20px; text-align: center; font-weight: bold;">
+                    Modify&view</a>
+            </div>
+            
+        </form>
+</body>
+</html>
+
+
+
+
