@@ -135,4 +135,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'bimalbabu720@gmail.com'
-EMAIL_HOST_PASSWORD = 'jqrrucqbwlxnfvzh'
+EMAIL_HOST_PASSWORD = ''
